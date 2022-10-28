@@ -1,0 +1,8 @@
+{
+  "short_name": "Contect Menu",
+  "name": "Right Click Contect Menu",
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}
