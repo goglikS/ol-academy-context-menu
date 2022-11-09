@@ -5,15 +5,16 @@ const ContextMenu = () => {
   const [yPos, setYPos] = useState("0px");
   const [showMenu, setShowMenu] = useState(false);
   const popupRef = useRef(null);
+  const [contextText, setContentText] = useState("");
 
-  const selectedLi = (valueOfLi) => {
-    console.log(valueOfLi);
+  const selectedLi = (option) => {
+    console.log(option, contextText);
     setShowMenu(false);
   };
 
-  const Menu = () => (
+  const Options = () => (
     <ul className="menu-options">
-      <p className="center">choose option</p>
+      <p>{contextText}</p>
       <li onClick={() => selectedLi("edit")} className="menu-edit">
         Edit
       </li>
@@ -23,20 +24,26 @@ const ContextMenu = () => {
     </ul>
   );
 
-  const handleContextMenu = (e) => {
-    e.preventDefault();
-    setXPos(`${e.pageX}px`);
-    setYPos(`${e.pageY}px`);
-    setShowMenu(true);
-  };
   useEffect(() => {
-    const handleClick = (e) => {
+    const handleClick = ({ target }) => {
       if (popupRef.current !== null) {
       }
-      if (!popupRef.current?.contains(e.target)) {
+      if (!popupRef.current?.contains(target)) {
         setShowMenu(false);
+        setContentText("");
       }
     };
+
+    const handleContextMenu = (e) => {
+      if (popupRef.current !== null && popupRef.current?.contains(e.target)) {
+        e.preventDefault();
+        setContentText(e.target.innerText);
+        setXPos(`${e.pageX}px`);
+        setYPos(`${e.pageY}px`);
+        setShowMenu(true);
+      }
+    };
+
     document.addEventListener("click", handleClick);
     document.addEventListener("contextmenu", handleContextMenu);
 
@@ -46,7 +53,7 @@ const ContextMenu = () => {
     };
   });
 
-  return { xPos, yPos, showMenu, popupRef, Menu };
+  return { xPos, yPos, showMenu, popupRef, Options };
 };
 
 export default ContextMenu;

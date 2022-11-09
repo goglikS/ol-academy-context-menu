@@ -1,3 +1,57 @@
 body {
   font-family: "Roboto", san-serif;
 }
+.center {
+  text-align: center;
+}
+.menu {
+  font-size: 14px;
+  background-color: beige;
+  border-radius: 2px;
+  padding: 5px 0 5px 0;
+  width: 150px;
+  height: auto;
+  margin: 0;
+  position: absolute;
+  list-style: none;
+  box-shadow: 0 0 20px 0 rgb(192, 73, 73);
+  opacity: 1;
+  transition: opacity 0.5s linear;
+}
+.context-wrapper {
+  margin: auto;
+  font-size: 40px;
+  width: 600px;
+  height: auto;
+  text-align: center;
+}
+.menu-options {
+  list-style: none;
+  padding: 10px 0;
+  z-index: 1;
+}
+.menu-edit {
+  font-weight: 500;
+  z-index: 1;
+  font-size: 14px;
+  padding: 10px 40px 10px 20px;
+  cursor: pointer;
+  background-color: aquamarine;
+}
+.menu-remove {
+  font-weight: 500;
+  z-index: 1;
+  font-size: 14px;
+  padding: 10px 40px 10px 20px;
+  cursor: pointer;
+  background-color: grey;
+}
+p {
+  padding: 0;
+  margin: 0;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+ul {
+  list-style: none;
+}
