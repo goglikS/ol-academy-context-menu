@@ -26,8 +26,6 @@ const ContextMenu = () => {
 
   useEffect(() => {
     const handleClick = ({ target }) => {
-      if (popupRef.current !== null) {
-      }
       if (!popupRef.current?.contains(target)) {
         setShowMenu(false);
         setContentText("");
@@ -51,7 +49,7 @@ const ContextMenu = () => {
       document.removeEventListener("click", handleClick);
       document.removeEventListener("click", handleContextMenu);
     };
-  });
+  }, []);
 
   return { xPos, yPos, showMenu, popupRef, Options };
 };
